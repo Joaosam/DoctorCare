@@ -20,5 +20,5 @@ ScrollReveal({
   distance: '30px',
   duration: 750
 }).reveal(
-  `#home, .logoMulher, #home .stats, #services, #services header, .card, #about, #about header, #about .content`
+  `#home, .logoMulher, #home .stats, #services, #services header, .card, #about, #about header, #about .content, #about img`
 )
