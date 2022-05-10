@@ -1,15 +1,16 @@
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
 
 <p align="center">
-  <img alt="DoctorCare" src=".github/desktop.jpg" width="50%">
-  <img alt="DoctorCare" src=".github/mobile.jpg" width="50%">
+  <img alt="DoctorCare" src=".github/desktop.png" width="50%">
+  <img alt="DoctorCare" src=".github/mobile.png" height="274px">
 </p>
+
 
 ## 🚀 Tecnologias
 
