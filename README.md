@@ -8,7 +8,7 @@
 
 <p align="center">
   <img alt="DoctorCare" src=".github/desktop.png" width="50%">
-  <img alt="DoctorCare" src=".github/mobile.png" height="270px">
+  <img alt="DoctorCare" src=".github/mobile.png" height="271px">
 </p>
 
 
