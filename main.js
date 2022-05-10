@@ -5,6 +5,33 @@ addEventListener('scroll', roll)
 function roll() {
   showNav()
   backToTop()
+
+  activateMenu(home)
+  activateMenu(services)
+  activateMenu(about)
+}
+
+function activateMenu(section) {
+  const targetLine = scrollY + innerHeight / 2
+
+  const sectionTop = section.offsetTop
+  const sectionHeight = section.offsetHeight
+
+  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop
+  const sectionEndsAt = sectionTop + sectionHeight
+
+  /* A base da seção passou da linha alvo? */
+  const sectionEndPassedTargeLine = sectionEndsAt <= targetLine
+  const sectionLimit =
+    sectionTopReachOrPassedTargetLine && !sectionEndPassedTargeLine
+
+  const sectionId = section.getAttribute('id')
+  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
+
+  menuElement.classList.remove('active')
+  if (sectionLimit) {
+    menuElement.classList.add('active')
+  }
 }
 
 function showNav() {
