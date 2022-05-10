@@ -10,10 +10,12 @@
   --primary-color: hsl(var(--root), 100%, 26%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
+
   --brand-beige: hsl(39, 100%, 97%);
-  --brand-light: hsl(calc(var(--root)-22), 23%, 89%);
-  --bg-body: hsl(180, 12%, 97%);
+  --brand-light: hsl(calc(var(--root) - 22), 23%, 89%);
+  --bg-body: hsl(calc(var(--root) + 10), 14%, 97%);
   --hover-button: hsl(var(--root), 100%, 14%);
+
   --color-hover-menu: hsl(180, 14%, 97%);
 
   font-size: 62.5%; /* 1rem = 10px */
@@ -41,7 +43,7 @@ body {
    /* Sobreponho a barra de rolagem */
   overflow: overlay;
 /* A cor do header e outras sections estão sobrepondo o bg do body */
-  background-color: var(--bg-body);
+  background-color: var(--color-hover-menu);
 }
 
 .wrapper {
@@ -270,15 +272,15 @@ body.menuExtend button path {
 #home {
   /* Adiciono o margin-top do nav.
   margin-top: 11.3rem;  Daria o mesmo resultado, pois somo o margin do nav com o do header*/
+  padding-block: 0;
   padding-top: calc(4.1rem + var(--nav-height));
 }
 
 #home::before {
   content: '';
   width: 100%;
-  height: calc(108rem + var(--nav-height));
+  height: calc(75% + var(--nav-height));
   background-color: var(--brand-light);
-  /* Display block aceita width e height */
   display: block;
 
   position: absolute;
@@ -352,6 +354,10 @@ body.menuExtend button path {
 }
 
 /*================================= SERVICES =================================*/
+#services {
+  background-color: var(--bg-body);
+}
+
 #services header h2 {
   margin-bottom: 6rem;
 
@@ -391,6 +397,10 @@ body.menuExtend button path {
   margin-bottom: 6rem;
 }
 
+#about img {
+  width: 100%;
+}
+
 /*================================= CONTACT =================================*/
 #contact {
   text-align: left;
@@ -418,6 +428,10 @@ body.menuExtend button path {
   display: flex;
   align-items: center;
   gap: 0.8rem;
+}
+
+#contact .imagemHomem {
+  width: 100%;
 }
 
 /*================================= FOOTER =================================*/
@@ -477,8 +491,30 @@ footer .social {
 /*================================= RESPONSIVE =================================*/
 @media (min-width: 1024px) {
   /*=============== GENERAL ===============*/
+body {
+  overflow: auto;
+}
+
 .wrapper {
   width: min(112rem, 100%);
+  display: grid;
+}
+
+section {
+  padding-block: 16rem;
+}
+
+section header h2 {
+  font-size: 4rem;
+  line-height: 5.2rem;
+}
+
+.columnA {
+  grid-area: A;
+}
+
+.columnB {
+  grid-area: B;
 }
 
   /*=============== NAVIGATION ===============*/
@@ -565,8 +601,7 @@ footer .social {
   nav#navigation .menu ul li a:hover {
     color: var(--primary-color);
 
-    opacity: 1;
-     
+    opacity: 1;     
 
     font-weight: 700;
   }
@@ -577,6 +612,7 @@ footer .social {
     height: 2px;
 
     background-color: var(--primary-color);
+    color: var(--brand-light);
   
     transition: width 0.15s linear;
   }
@@ -595,9 +631,13 @@ footer .social {
     padding-inline: 0.7rem;
   }
 /* SCROLL */
+nav#navigation.scroll .menu ul li a {
+  color: var(--brand-light);
+}
+
   nav#navigation.scroll .menu ul li a:active,
   nav#navigation.scroll .menu ul li a:hover {
-    color: var(--color-hover-menu);
+    color: white;
 
     opacity: 1;
      
@@ -619,6 +659,8 @@ footer .social {
     display: block;
 
     width: 100%;
+
+    color: var(--brand-light);
   }
 
 /* BUTTON */
@@ -628,13 +670,139 @@ footer .social {
     
     border: none;
 
-    filter: brightness(1.3);
+    filter: brightness(1.1);
 
     transition: 400ms linear;
   }
 
   /*================================= HOME =================================*/
+#home::before {
+  height: calc(95% - var(--nav-height))
+}
 
+#home {
+  padding-top: var(--nav-height);
+}
 
+#home .wrapper {
+  grid-template-columns: 60.5rem 1fr;
+  grid-template-areas: 
+  "A B"
+  "C C";
+}
+
+#home .columnA {
+  grid-area: A;
+  text-align: left;
+  /* Alinho a .columnA a ao centro */
+  align-self: center;
+}
+
+#home .columnB {
+  grid-area: B;
+}
+
+#home h1 {
+  font-size: 5.2rem;
+}
+
+#home .content p {
+  font-size: 1.8rem;
+}
+
+#home .stats {
+  grid-area: C;
+
+  flex-direction: row;
+  padding: 6rem;
+}
+
+/* Dentro do .stats procure um .stat que tenha um .stat anterior */
+#home .stats .stat + .stat {
+  border-left: 1px solid var(--primary-color);
+}
+
+/* Preenche a largura por igual o conteúdo do meu .stats */
+#home .stats .stat {
+  flex: 1;
+  gap: 0;
+}
+
+#home .button {
+  margin: 0;
+}
+
+#home .logoMulher {
+  width: 42rem;
+}
+
+/*================================= SERVICES =================================*/
+#services h2 {
+  /* Quebrar linha */
+  width: 49.7rem;
+  /* Centralizo */
+  margin-inline: auto;
+
+  font-size: 4rem;
+}
+
+#services .cards {
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  gap: 4rem;
+}
+
+#services .card {
+  width: 30%;
+  /* Cresce o suficiente para preencher espaço restante */
+  flex-grow: 1;
+}
+
+/*================================= ABOUT =================================*/
+#about .wrapper {
+  grid-template-columns: 48rem 1fr;
+  grid-template-areas: 'B A';
+  gap: 6.7rem;
+}
+
+#about .columnA {
+  align-self: center;
+}
+
+#about .content p {
+  margin-bottom: 0;
+}
+
+/*================================= CONTACT =================================*/
+#contact .wrapper {
+  grid-template-columns: 1fr 57.5rem ;
+  grid-template-areas: 'A B';
+}
+
+#contact .columnA {
+  width: 40.4rem;
+  align-self: center;
+}
+
+/*================================= FOOTER =================================*/
+footer {
+  padding-block: 8rem;
+}
+
+footer .wrapper {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'A B';
+}
+
+footer .columnA {
+  margin-bottom: 0;
+  align-self: center;
+}
+
+footer .columnB {
+  align-self: center;
+  justify-self: flex-end;
+}
 
 }
